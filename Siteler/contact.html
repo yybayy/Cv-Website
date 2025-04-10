@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yiğit Bay | Öğrenci</title>
+    <link rel="stylesheet" href="style2.css" />
+    <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="title" style="font-family: 'Inter'">
+            <p>Yiğit Bay | Student</p>
+            <p></p>
+        </div>
+
+        <div class="introduce">
+            <h1>
+                <span>Contact </span>
+                <span style="color: #1ae6db">Me</span>
+            </h1>
+        </div>
+
+
+
+
+        <div class="dropdown">
+            <ul>
+                <li data-value="#5790E6"><b>Email</b> yigitby@bydev.com</li>
+                <li data-value="#8773EB"><b>Phone</b> 0543 234 1234</li>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3013.6224776818985!2d29.156851429716188!3d40.94594046370897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5cb115dcf59%3A0x24c9fd87cfa53a8d!2zWsO8bXLDvHRldmxlciwgS2lwdGHFnyBBZGF0ZXBlIFNpdGVzaSBObzo5MiwgMzQ4NTIgTWFsdGVwZS_EsHN0YW5idWwsIFTDvHJraXll!5e0!3m2!1str!2sus!4v1734464166443!5m2!1str!2sus"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </ul>
+        </div>
+
+        <div class="platforms">
+            <a href="linkedin.com" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+            <a href="github.com" target="_blank"><i class="fa fa-github-square"></i></a>
+        </div>
+
+
+        <div class="footer">
+
+            <hr>
+            <div class="all-footer">
+                <div class="footer-c">
+                    <ul>
+                        <li
+                            style="font-size:48px; font-family:Oswald; margin-bottom: 10px; text-decoration-line: underline ;">
+                            Page
+                        </li>
+                        <li><a href="#">About me</a></li>
+                        <li><a href="#nav-Projects">Projects</a></li>
+                        <li><a href="#knowledge">My Knowledge</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-c">
+                    <ul>
+                        <li
+                            style="font-size:48px; font-family:Oswald; margin-bottom: 10px; text-decoration-line: underline ;">
+                            Projects</li>
+                        <li><a href="#">Killer Circle</a></li>
+                        <li><a href="#">Poor Mankind</a></li>
+                        <li><a href="#">Kuba Motors</a></li>
+                        <li><a href="#">C++ Keylogger</a></li>
+                        <li><a href="#">Python Keylogger</a></li>
+                    </ul>
+                </div>
+                <div class="footer-c">
+                    <ul>
+                        <li
+                            style="font-size:48px; font-family:Oswald; margin-bottom: 10px; text-decoration-line: underline ;">
+                            Contact
+                            Me</li>
+                        <li><a href="#">yigitbay@site.com</a></li>
+                        <li><a href="#">0123 321 1234</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-c2">
+                <a href=""><i class="devicon-github-original"></i></a>
+                <a href=""><i class="devicon-linkedin-plain"></i></a>
+                <a href=""><i class="devicon-twitter-original"></i></a>
+            </div>
+
+
+        </div>
+
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#nav-Projects">Projects</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+
+
+        <script>
+            const navbar = document.querySelector(".nav-bar");
+
+            document.addEventListener("mousemove", (event) => {
+                const rect = navbar.getBoundingClientRect();
+                const distance = Math.abs(rect.top - event.clientY);
+
+                const maxDistance = 600;
+                let opacity = 1 - distance / maxDistance;
+                opacity = Math.max(0.5, Math.min(opacity, 1));
+
+                navbar.style.opacity = opacity;
+            });
+
+
+        </script>
+
+        <script type="module">
+            import { fairyDustCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+
+            new fairyDustCursor();
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+
+                setTimeout(() => {
+                    const dropdownItems = document.querySelectorAll('.dropdown ul li');
+                    dropdownItems.forEach(item => {
+                        item.style.height = "auto";
+                        item.style.overflow = "auto";
+                        item.style.opacity = "1";
+                        item.style.padding = "10px";
+                    });
+                    const dropdownHeader = document.querySelector('.dropdown h1');
+                    if (dropdownHeader) {
+                        dropdownHeader.style.borderRadius = "5px 5px 0px 0px";
+                    }
+                }, 500);
+            });
+        </script>
+
+</body>
+
+</html>

